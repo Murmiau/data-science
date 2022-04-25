@@ -1,17 +1,6 @@
-my_text = open("homework-5.2.txt", "r")
-cont = my_text.read()
-print(f"Файл: \n {cont}")
-my_text = open("homework-5.2.txt", "r")
-cont = my_text.readlines()
-print(f"Количество строк в файле: {len(cont)}")
-my_text = open("homework-5.2.txt", "r")
-cont = my_text.readlines()
-for i in range(len(cont)):
-    print(f"Количество символов в {i + 1} строке: {len(cont[i])}")
-my_text = open("homework-5.2.txt", "r")
-cont = my_text.readlines()
-cont = str(cont)
-cont = cont.split()
-for i in range(len(cont)):
-    print(f"Всего слов в {i + 1} строке: {len(cont[i])}")
-my_text.close()
+with open("hw2.txt", "r", encoding="UTF-8") as my_file:
+    text = my_file.readlines()
+    print(f"Всего строк: {len(text)}")
+    for el, val in enumerate(text):
+        words = val.split(" ")
+        print(f"Всего слов в строке N{el + 1}: {len(words)}")
