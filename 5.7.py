@@ -1,25 +1,27 @@
 import json
-
-report = []
-with open('task07.data', 'r', encoding='UTF-8') as file:
-    text = file.read()
-    file.seek(0)
-    profits = {}
-    profit_sum = 0
-    for row in file:
-        items = row.split(' ')
-        profit = int(items[2]) - int(items[3])
+rep = []
+with open("hw10.txt", "r", encoding="UTF-8") as my_file:
+    my_text = my_file.read()
+    my_file.seek(0)
+    prof = {}
+    prof_summ = 0
+    n = 0
+    for el in my_file:
+        item = el.split(" ")
+        profit = int(item[2]) - int(item[3])
         if profit > 0:
-            profits.update({items[0]: profit})
-            profit_sum += profit
-    report.append(profits)
-    report.append({'average_profit': (profit_sum / len(profits))})
+            prof.update({item[0]: profit})
+            prof_summ += profit
+            n += 1
+        else:
+            prof.update({item[0]: profit})
+            n += 0
+    rep.append(prof)
+    rep.append({"Полученная прибыль": (prof_summ / n)})
+with open("hw11.txt", "w", encoding="UTF-8") as json_file:
+    json.dump(rep, json_file, ensure_ascii=False)
+json_report = json.dumps(rep, ensure_ascii=False)
 
-with open('task07.json.tmp', 'w', encoding='UTF-8') as json_file:
-    json.dump(report, json_file, ensure_ascii=False)
-
-json_report = json.dumps(report, ensure_ascii=False)
-
-print(f"Исходный файл:\n{text}\n")
-print(f"Список:\n{report}\n")
+print(f"Исходный файл:\n{my_text}\n")
+print(f"Список фирм с прибылью/убытком:\n{rep}\n")
 print(f"json-объект:\n{json_report}")
