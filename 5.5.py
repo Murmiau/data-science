@@ -9,3 +9,4 @@ with open("hw8.txt", "r", encoding="UTF-8") as my_file:
     num_sum = num_str.split(" ")
     print(f"Набор чисел в файле:\n{num_str}")
     print(f"Сумма чисел в файле:\n{sum([int(i) for i in num_sum])}")
+    
